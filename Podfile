@@ -4,14 +4,5 @@
 use_frameworks!
 
 target 'PerfectTemplate' do
-    
-# pod 'Alamofire'
-# pod 'SwiftyJSON'
- #pod 'CryptoSwift'
-# pod 'AlamofireImage', '~> 3.0'
-# pod 'YYModel'
-#pod 'XCGLogger', '~> 3.5'
-#pod 'RxSwift',    '~> 3.0'
-#pod 'RxCocoa',    '~> 3.0'
 end
 

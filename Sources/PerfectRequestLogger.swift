@@ -54,7 +54,6 @@ public class RequestLogger: HTTPRequestFilter, HTTPResponseFilter {
 	}
 }
 
-// http://stackoverflow.com/questions/26845307/generate-random-alphanumeric-string-in-swift
 func randomAlphaNumericString(length: Int) -> String {
 
 	let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

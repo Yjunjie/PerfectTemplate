@@ -44,10 +44,6 @@ struct UploadHandler: MustachePageHandler { // all template handlers must inheri
 				let thisFile = File(upload.tmpFileName)
 				do {
                     print("[\(#line)]->path==\(fileDir.path + upload.fileName) ")
-//                    LogFile.debug("LogFilerequestCompleted==path==\(fileDir.path + upload.fileName) ")
-//                    LogFile.info("LogFilerequestCompleted==path==\(fileDir.path + upload.fileName) ")
-//                    LogFile.warning("LogFilerequestCompleted==path==\(fileDir.path + upload.fileName) ")
-//                    LogFile.critical("LogFilerequestCompleted==path==\(fileDir.path + upload.fileName) ")
 				} catch {
 					print("[\(#line)]->\(error)")
 				}
@@ -67,10 +63,8 @@ struct UploadHandler: MustachePageHandler { // all template handlers must inheri
 		// Grab the regular form parameters
 		let params = request.params()
 		if params.count > 0 {
-			// Create an array of dictionaries which will show what was posted
-			// This will not include any uploaded files. Those are handled above.
-			var ary = [[String:Any]]()
 
+			var ary = [[String:Any]]()
 			for (name, value) in params {
 				ary.append([
 					"paramName":name,
@@ -101,7 +95,7 @@ struct UploadHandler: MustachePageHandler { // all template handlers must inheri
 		values["title"] = "Upload Enumerator"
 		contxt.extendValues(with: values)
 		do {
-//上传成功
+            //上传成功
             print("[\(#line)]->requestCompleted==\(josn )")
             let response = contxt.webResponse
             response.status = .ok
@@ -110,10 +104,6 @@ struct UploadHandler: MustachePageHandler { // all template handlers must inheri
 
 		} catch {
             print("[\(#line)]->response.completed()==\(error)")
-//			let response = contxt.webResponse
-//			response.status = .internalServerError
-//			response.appendBody(string: "\(error)")
-//			response.completed()
 		}
 	}
 }

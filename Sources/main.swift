@@ -11,11 +11,8 @@
 import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
-//import PerfectRequestLogger
-//import PerfectLogger
 import MySQL
-//import Mustache
-// Create HTTP server.
+
 
 let server = HTTPServer()
 let handler = {
@@ -84,126 +81,6 @@ routes.add(method: .post, uri: "/login") { (request, response) in
     response.completed()
 }
 
-//获取内容列表
-routes.add(method: .post, uri: "/contentList") { (request, response) in
-    guard let userId: String = request.param(name: "userId") else {
-        print("[\(#line)]->userId为nil")
-        return
-    }
-    
-    guard let json = ContentOperator().queryContentList(userId: userId) else {
-        print("[\(#line)]->josn为nil")
-        return
-    }
-    print("[\(#line)]->ContentOperator==\(json)==\(request)")
-    response.setBody(string: json)
-    response.completed()
-}
-
-//获取详情
-routes.add(method: .post, uri: "/contentDetail") { (request, response) in
-    guard let contentId: String = request.param(name: "contentId") else {
-        print("[\(#line)]->contentId为nil")
-        return
-    }
-    guard let json = ContentOperator().queryContentDetail(contentId: contentId) else {
-        print("[\(#line)]->josn为nil")
-        return
-    }
-    print("[\(#line)]->ContentOperator==\(json)==\(request)==\(response)")
-    response.setBody(string: json)
-    response.completed()
-}
-
-//添加内容
-routes.add(method: .post, uri: "/contentAdd") { (request, response) in
-    guard let userId: String = request.param(name: "userId") else {
-        print("[\(#line)]->userId为nil")
-        return
-    }
-    
-    guard let title: String = request.param(name: "title") else {
-        print("[\(#line)]->title为nil")
-        return
-    }
-    
-    guard let content: String = request.param(name: "content") else {
-        print("[\(#line)]->content为nil")
-        return
-    }
-    
-    guard let create_time: String = request.param(name: "create_time") else {
-        print("[\(#line)]->create_time为nil")
-        return
-    }
-
-    
-    guard let json = ContentOperator().addContent(userId: userId, title: title, content: content,create_time: create_time) else {
-        print("[\(#line)]->josn为nil")
-        return
-    }
-    print("[\(#line)]->ContentOperator==\(json)==\(request)")
-    response.setBody(string: json)
-    response.completed()
-}
-
-//更新内容
-routes.add(method: .post, uri: "/contentUpdate") { (request, response) in
-    guard let contentId: String = request.param(name: "contentId") else {
-        print("[\(#line)]->contentId为nil")
-        return
-    }
-    
-    guard let title: String = request.param(name: "title") else {
-        print("[\(#line)]->title为nil")
-        return
-    }
-    
-    guard let content: String = request.param(name: "content") else {
-        print("[\(#line)]->content为nil")
-        return
-    }
-    guard let create_time: String = request.param(name: "create_time") else {
-        print("[\(#line)]->create_time为nil")
-        return
-    }
-    
-    guard let json = ContentOperator().updateContent(contentId: contentId, title: title, content: content,create_time:create_time) else {
-        print("[\(#line)]->josn为nil")
-        return
-    }
-    print("[\(#line)]->ContentOperator==\(json)==\(request)")
-    response.setBody(string: json)
-    response.completed()
-}
-
-//删除内容
-routes.add(method: .post, uri: "/contentDelete") { (request, response) in
-    guard let contentId: String = request.param(name: "contentId") else {
-        print("[\(#line)]->contentId为nil")
-        return
-    }
-    
-    guard let json = ContentOperator().deleteContent(contentId: contentId) else {
-        print("[\(#line)]->josn为nil")
-        return
-    }
-    //LogFile.info(json)
-    response.setBody(string: json)
-    response.completed()
-}
-
-
-
-
-
-
-
-
-
-
-
-
 //MARK: - 路由
 //MARK: - 路由变量
 let valueKey = "key"
@@ -235,11 +112,6 @@ routes.add(method: .get, uri: "/path3/**") { (request, response) in
 
 //优先级：路由变量 > 静态路由 > 通配符路径 > 结尾通配符
 
-
-
-
-
-
 //MARK: - 配置路由版本
 // 为程序接口API版本v1创建路由表
 var api = Routes()
@@ -268,11 +140,6 @@ api2Routes.add(method: .get, uri: "/call2", handler: { _, response in
 routes.add(api1Routes)
 routes.add(api2Routes)
 
-
-
-
-
-
 //MARK: - 返回图片
 routes.add(method: .get, uri: "/cat", handler: {
     request, response in
@@ -294,9 +161,6 @@ routes.add(method: .get, uri: "/cat", handler: {
     response.completed()
 }
 )
-
-
-
 
 //MARK: - 获取请求参数:
 func convertJons(params: [(String, String)]) -> String{

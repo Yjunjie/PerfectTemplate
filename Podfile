@@ -11,7 +11,7 @@ target 'PerfectTemplate' do
 # pod 'AlamofireImage', '~> 3.0'
 # pod 'YYModel'
 #pod 'XCGLogger', '~> 3.5'
-pod 'RxSwift',    '~> 3.0'
-pod 'RxCocoa',    '~> 3.0'
+#pod 'RxSwift',    '~> 3.0'
+#pod 'RxCocoa',    '~> 3.0'
 end
 
